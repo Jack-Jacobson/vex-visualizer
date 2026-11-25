@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Telemetry Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="group seg" id="fieldToggle">
+      <button data-field="match" class="active">Match</button>
+      <button data-field="skills">Skills</button>
+    </div>
+    <div class="group">
+      <select id="driveSelect" class="desktop-only" title="Drive to read CSV files from"></select>
+      <button id="btnDrive" class="desktop-only">Load from drive</button>
+      <button id="btnOpen">Open file</button>
+      <button id="btnFolder" class="web-only">Open drive</button>
+      <button id="btnDemo" class="web-only">Load demo</button>
+      <input type="file" id="folderInput" webkitdirectory hidden>
+      <input type="file" id="fileInput" accept=".csv,text/csv" multiple hidden>
+    </div>
+    <div class="spacer"></div>
+    <span id="status"></span>
+  </header>
+
+  <main>
+    <aside>
+      <section>
+        <h2>Runs</h2>
+        <ul id="runList"><li class="empty">None</li></ul>
+      </section>
+      <section>
+        <h2>Layers</h2>
+        <label class="lall"><input type="checkbox" id="lyAll"> Select all</label>
+        <label><input type="checkbox" id="lyPath" checked> Robot path</label>
+        <label><input type="checkbox" id="lyRobot" checked> Robot</label>
+        <label><input type="checkbox" id="lyPeriod" checked> Auto / Driver</label>
+        <label><input type="checkbox" id="lySpeed" checked> Speed</label>
+        <label><input type="checkbox" id="lyLift" checked> Lift &amp; claw</label>
+        <label><input type="checkbox" id="lyScore" checked> Scoring</label>
+        <label><input type="checkbox" id="lyScoreSpots"> Score locations</label>
+        <label><input type="checkbox" id="lyTemps" checked> Motor temps</label>
+      </section>
+      <section class="desktop-only">
+        <details id="pathsBox">
+          <summary>Planned paths</summary>
+          <div id="pathList"><div class="empty">None</div></div>
+        </details>
+      </section>
+      <section>
+        <h2>Readout</h2>
+        <dl id="readout">
+          <dt>Time</dt><dd id="rTime">-</dd>
+          <dt>X</dt><dd id="rX">-</dd>
+          <dt>Y</dt><dd id="rY">-</dd>
+          <dt>Heading</dt><dd id="rTh">-</dd>
+          <dt>Speed</dt><dd id="rSpeed">-</dd>
+          <dt>Lift</dt><dd id="rLift">-</dd>
+          <dt>Claw</dt><dd id="rClaw">-</dd>
+          <dt>Scored</dt><dd id="rScore">-</dd>
+          <dt>Period</dt><dd id="rPeriod">-</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Motor temps</h2>
+        <dl id="tempList"></dl>
+      </section>
+    </aside>
+
+    <div id="stage">
+      <canvas id="field"></canvas>
+    </div>
+  </main>
+
+  <div id="charts"><canvas id="chart"></canvas></div>
+
+  <footer>
+    <button id="btnPlay">Play</button>
+    <div class="seg" id="speedToggle">
+      <button data-speed="0.5">0.5x</button>
+      <button data-speed="1" class="active">1x</button>
+      <button data-speed="2">2x</button>
+      <button data-speed="4">4x</button>
+    </div>
+    <input type="range" id="scrub" min="0" max="0" value="0" step="1">
+    <span id="timeLabel">0.0 / 0.0 s</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

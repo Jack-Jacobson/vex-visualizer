@@ -1,0 +1,10 @@
+*.py
+*.pyw
+*.bat
+*.log
+__pycache__
+.git
+.gitignore
+.dockerignore
+Dockerfile
+requirements.txt
