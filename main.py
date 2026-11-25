@@ -1,4 +1,4 @@
-import atexit
+﻿import atexit
 import os
 import re
 import shutil
@@ -18,7 +18,7 @@ PROJECTS_DIR = os.environ.get("VISUALIZER_PROJECTS_DIR") or os.path.dirname(BASE
 _trash_dir = None
 _trash_stack = []
 
-
+#test 
 def _get_trash():
     global _trash_dir
     if _trash_dir is None:
