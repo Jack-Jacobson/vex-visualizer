@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>Telemetry Visualizer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" as="image" href="assets/match.webp" type="image/webp">
+  <link rel="preload" as="fetch" href="assets/sample.csv" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -88,6 +90,6 @@
     <span id="timeLabel">0.0 / 0.0 s</span>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

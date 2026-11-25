@@ -1,6 +1,6 @@
 const FIELD_MM = 12 * 304.8;
 const ORIGIN = "center";
-const IMAGES = { match: "assets/match.png", skills: "assets/skills.png" };
+const IMAGES = { match: "assets/match.webp", skills: "assets/skills.webp" };
 const FLOOR_INSET = 34 / 2000;
 const FONT = 'Arial, Helvetica, sans-serif';
 document.documentElement.style.setProperty("--font", FONT);
@@ -725,10 +725,6 @@ function drawField() {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   } else {
     drawGrid();
-    ctx.fillStyle = "#555";
-    ctx.font = `${canvas.width / 40}px ${FONT}`;
-    ctx.textAlign = "center";
-    ctx.fillText(`Add web/${IMAGES[state.field]}`, canvas.width / 2, canvas.height / 2);
   }
 
   drawPaths();
@@ -1190,9 +1186,7 @@ window.addEventListener("pywebviewready", () => {
   refreshDrive();
   loadPaths();
 });
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    if (!desktop) loadDemo();
-  }, 400);
-});
+setTimeout(() => {
+  if (!desktop && !window.pywebview) loadDemo();
+}, 100);
 resize();
